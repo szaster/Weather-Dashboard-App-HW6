@@ -1,6 +1,9 @@
 # Weather-Dashboard-App-HW6
 Weather Dashboard Application which allows to see the weather outlook for multiple cities
 
+https://github.com/szaster/Weather-Dashboard-App-HW6
+
+https://szaster.github.io/Weather-Dashboard-App-HW6/
 
 
 ## Description
