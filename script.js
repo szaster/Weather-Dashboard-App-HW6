@@ -1,5 +1,5 @@
 const apiKey = "67a37ebd6ba52d3daa78ec43caca41e0";
-const city = "Houston";
+// const city = "Houston";
 const weatherResults = $("#weatherResults");
 // const url = "https://api.openweathermap.org/data/2.5/forecast";
 
@@ -61,21 +61,20 @@ function hourlyForecastCard(forecast) {
   const cityTemp = toFarhenheit(forecast.main.temp);
   const cityHumidity = forecast.main.humidity;
   const cityWind = forecast.wind.speed;
-  const cityWeather = forecast.weather.main;
-  const cityDescription = forecast.weather.description;
+  // const cityClouds = forecast.;
+  // const cityWeather = forecast.weather[[1]];
+  // const cityDescription = forecast.weather.description;
  
   // $("#weatherResults")
 
-  return `<div class="col s12 m6">
+  return `<div class="col s12 m3">
                 <div class="card">
                     <div class="card-content">
                     <span class="card-title">${time.format("ddd, hA")}</span>
                     <p> Temperature: ${cityTemp} F </p>
-                    <p> Humidity: ${cityHumidity}, % </p>
-                    <p> Wind: ${cityWind}, </p>
-                    <p> Weather: ${cityWeather}, </p>
-                    <p> Forecast: ${cityDescription}, </p>
-                    
+                    <p> Humidity: ${cityHumidity} % </p>
+                    <p> Wind: ${cityWind} m/s </p>
+                  
                     </div>
                 </div>
   </div>`;
