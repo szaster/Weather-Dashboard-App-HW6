@@ -1,5 +1,4 @@
 const apiKey = "67a37ebd6ba52d3daa78ec43caca41e0";
-// const city = "Houston";
 const weatherResults = $("#weatherResults");
 // const url = "https://api.openweathermap.org/data/2.5/forecast";
 
@@ -41,7 +40,7 @@ function onPressEnter(event) {
   $(document).ready(function () {
     displayCurrentDate();
     addClearSearchEventListeners();
-    // displayHourlyForcast();
+  
   
     $("#searchSubmit").on("click", function(){
       const cityName = $("#search").val();
@@ -61,11 +60,6 @@ function hourlyForecastCard(forecast) {
   const cityTemp = toFarhenheit(forecast.main.temp);
   const cityHumidity = forecast.main.humidity;
   const cityWind = forecast.wind.speed;
-  // const cityClouds = forecast.;
-  // const cityWeather = forecast.weather[[1]];
-  // const cityDescription = forecast.weather.description;
- 
-  // $("#weatherResults")
 
   return `<div class="col s12 m3">
                 <div class="card">
@@ -97,17 +91,10 @@ function setNotFound(response) {
 
 function getWeatherDataAndDisplay(city) {
     const apiUrl = url(city);
-    return fetch(apiUrl)
-      .then(handleFetchError)
-      .then(r => r.json().then(displayWeatherData))
-      .catch(e => console.log(e));
+    return fetch(apiUrl).then(handleFetchError).then(r => r.json().then(displayWeatherData)).catch(e => console.log(e));
 }
 
-function xSquare (x) {
-  return x*x;
-}
 
-const xSquare2 = x => x*x; 
 
 
 function displayCurrentDate() {
@@ -119,4 +106,3 @@ function displayCurrentDate() {
 }
 
 
-// getWeather("Houston");
