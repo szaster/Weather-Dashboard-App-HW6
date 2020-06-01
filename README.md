@@ -1,6 +1,10 @@
 # Weather-Dashboard-App-HW6
 Weather Dashboard Application which allows to see the weather outlook for multiple cities
 
-This application uses OpenWeather API https://openweathermap.org/api to retrieve weather data for cities.
+
 
 ## Description
+
+This application uses OpenWeather API https://openweathermap.org/api to retrieve weather data for cities.
+The application takes a city as an input and displays weather conditions, such as temperature in the Fahrenheit scale, the humidity, the wind speed. The application offers 5 days forecast at any location or city, additionally the 5 day forecast includes weather data every three hours.
+
