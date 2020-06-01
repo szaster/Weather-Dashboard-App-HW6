@@ -57,8 +57,28 @@ function toFarhenheit (temp) {
 }
 
 function hourlyForecastCard(forecast) {
+  const time = moment.unix(forecast.dt);
   const cityTemp = toFarhenheit(forecast.main.temp);
-  return `<div><p>${cityTemp} F </p></div>`;
+  const cityHumidity = forecast.main.humidity;
+  const cityWind = forecast.wind.speed;
+  const cityWeather = forecast.weather.main;
+  const cityDescription = forecast.weather.description;
+ 
+  // $("#weatherResults")
+
+  return `<div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                    <span class="card-title">${time.format("ddd, hA")}</span>
+                    <p> Temperature: ${cityTemp} F </p>
+                    <p> Humidity: ${cityHumidity}, % </p>
+                    <p> Wind: ${cityWind}, </p>
+                    <p> Weather: ${cityWeather}, </p>
+                    <p> Forecast: ${cityDescription}, </p>
+                    
+                    </div>
+                </div>
+  </div>`;
 }
 
 
@@ -69,7 +89,7 @@ function displayHourlyForcast(forecast) {
 
 function displayWeatherData(weather) {
     console.log("Got new weather", weather);
-    displayHourlyForcast(weather.list[0]);
+    weather.list.forEach(displayHourlyForcast);
 }
 
 function setNotFound(response) {
