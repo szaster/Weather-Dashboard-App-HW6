@@ -16,45 +16,6 @@ function handleFetchError(response) {
     return response;
 }
 
-
-
-
-
-// $.ajax({
-//   url: url, //API Call
-//   dataType: "json",
-//   type: "GET",
-//   data: {
-//     q: city,
-//     appid: key,
-//     units: "metric",
-//     cnt: "10"
-//   },
-//   success: function(data) {
-//     console.log('Received data:', data) // For testing
-//     var wf = "";
-//     wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
-//     $.each(data.list, function(index, val) {
-//       wf += "<p>" // Opening paragraph tag
-//       wf += "<b>Day " + index + "</b>: " // Day
-//       wf += val.main.temp + "&degC" // Temperature
-//       wf += "<span> | " + val.weather[0].description + "</span>"; // Description
-//       wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>" // Icon
-//       wf += "</p>" // Closing paragraph tag
-//     });
-//     $("#showWeatherForcast").html(wf);
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
 //Cleares the search field
 function clearSearch() {
     $("#search").val("");
@@ -65,13 +26,10 @@ function clearSearch() {
     $("#clearSearchIcon").on("click", clearSearch);
   }
 
-
 function performSearch() {
     const textToSearch = $("#search").val();
-    getWeather(textToSearch);
-  }
-
-
+    getWeatherDataAndDisplay(textToSearch);
+}
 
 function onPressEnter(event) {
     if (event.key === "Enter") {
@@ -80,23 +38,36 @@ function onPressEnter(event) {
     }
   }
 
-
-
   $(document).ready(function () {
     displayCurrentDate();
     addClearSearchEventListeners();
+    // displayHourlyForcast();
   
-    $("#searchSubmit").on("click", getWeather);
+    $("#searchSubmit").on("click", function(){
+      const cityName = $("#search").val();
+      getWeatherDataAndDisplay(cityName);
+    });
   
     $("#search").on("keypress", onPressEnter);
   });
 
-function displayHourlyForcast(forecast) {
-  // update html here.
-  console.log(forecast);
+
+function toFarhenheit (temp) {
+  return Math.round(temp*1.8 - 459.67);
 }
 
-function setNewWeather(weather) {
+function hourlyForecastCard(forecast) {
+  const cityTemp = toFarhenheit(forecast.main.temp);
+  return `<div><p>${cityTemp} F </p></div>`;
+}
+
+
+function displayHourlyForcast(forecast) {
+  const cardHtml = hourlyForecastCard(forecast);
+  $("#weatherResults").append($.parseHTML(cardHtml));
+}
+
+function displayWeatherData(weather) {
     console.log("Got new weather", weather);
     displayHourlyForcast(weather.list[0]);
 }
@@ -105,14 +76,19 @@ function setNotFound(response) {
     console.log("Problem", response);
 }
 
-function getWeather(city) {
+function getWeatherDataAndDisplay(city) {
     const apiUrl = url(city);
     return fetch(apiUrl)
-                .then(handleFetchError)
-                .then(r => r.json().then(setNewWeather))
-                .catch(e => console.log(e));
+      .then(handleFetchError)
+      .then(r => r.json().then(displayWeatherData))
+      .catch(e => console.log(e));
 }
 
+function xSquare (x) {
+  return x*x;
+}
+
+const xSquare2 = x => x*x; 
 
 
 function displayCurrentDate() {
@@ -124,4 +100,4 @@ function displayCurrentDate() {
 }
 
 
-getWeather("Houston");
+// getWeather("Houston");
