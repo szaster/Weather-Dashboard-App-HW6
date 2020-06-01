@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="assets/css/meyerweb.karbassi.2013.reset.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Materialize JavaScript cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/> -->
@@ -29,6 +32,16 @@
    
       <p id="current-time"></p>
     </header>
+
+
+
+    <div class="row">
+        <div class="transparent left grid-example col s12 m6"><span class="flow-text"></span>
+            <div class="btn-large">
+                <span id="date"></span>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -62,8 +75,13 @@
     <div id="weatherResults" class="row"></div>
 
     <h2>Five day forecast</h2>
-    <div></div>
-
+    <div class = "card col-2 day-forecast"></div>
+    <div class = "card-body">
+        <h5 class="card-title" id='dayTitle1'></h5>
+                  <p class="card-text" id='dayTemp1'></p>
+                  <p class="card-text" id='dayHumidity1'></p>
+    
+    </div>
 
 
 
@@ -73,6 +91,6 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="/script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
